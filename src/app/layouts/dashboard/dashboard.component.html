@@ -1,0 +1,41 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" [mode]="isMobile() ? 'over' : 'side'">
+    <p>Auto-resizing sidenav</p>
+    <ng-container *ngIf="showFiller">
+      <p>Lorem, ipsum dolor sit amet consectetur.</p>
+    </ng-container>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <mat-toolbar color="primary">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <div>
+          <button 
+            (click)="drawer.toggle()"
+            mat-icon-button 
+            class="example-icon" 
+            aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span>My Application</span>
+          <div>
+            <ng-container *ngIf="authUser$ | async as user">
+              <div>{{user?.firstName}}</div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </mat-toolbar>
+
+    <main style="padding: 1rem;">
+      <button (click)="login()" color="primary" mat-flat-button>Iniciar Sesion</button>
+      <button (click)="logout()" color="warn" mat-flat-button>Cerrar Sesion</button>
+      <app-clase-10-rxjs-2></app-clase-10-rxjs-2>
+    </main>
+  </div>
+</mat-drawer-container>
+
+
