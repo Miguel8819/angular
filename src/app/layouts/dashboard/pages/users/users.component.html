@@ -47,6 +47,9 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Acciones</th>
         <td mat-cell *matCellDef="let element"> 
+          <button mat-icon-button color="primary">
+            <mat-icon>visibility</mat-icon>
+          </button>
 
           <button (click)="openDialog(element)" mat-icon-button>
             <mat-icon>edit</mat-icon>

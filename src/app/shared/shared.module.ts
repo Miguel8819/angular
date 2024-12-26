@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { ResaltadoDirective } from './directives/resaltado.directive';
+import { MatListModule } from '@angular/material/list';
 
 
 
@@ -29,6 +30,7 @@ import { ResaltadoDirective } from './directives/resaltado.directive';
     MatIconModule,
     ReactiveFormsModule,
     ResaltadoDirective,
+    MatListModule,
   ],
 })
 export class SharedModule { }

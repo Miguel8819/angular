@@ -7,13 +7,22 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    loadChildren: () =>
+      import('./layouts/dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
-
+  
   {
     path: 'auth',
     component: AuthComponent,
-  }
-];
+    loadChildren: () =>
+      import('./layouts/auth/auth.module').then((m) => m.AuthModule)
+  },
+
+  { 
+    path: '**',
+    redirectTo: '/dashboard',
+  },  
+]; 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

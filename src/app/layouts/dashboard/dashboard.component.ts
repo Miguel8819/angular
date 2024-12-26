@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { Observable } from 'rxjs';
 import { IUser } from './pages/users/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ export class DashboardComponent {
 
   authUser$: Observable<IUser | null>;
 
-  constructor(private authService:AuthService){
+  constructor(private authService:AuthService, private router: Router){
     this.authUser$ = this.authService.authUser$;
   }
 
@@ -23,6 +24,7 @@ export class DashboardComponent {
 
   logout(): void  {
     this.authService.logout();
+    this.router.navigate(['auth']);
   }
 
   isMobile(): boolean{

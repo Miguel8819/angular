@@ -1,8 +1,17 @@
-import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-@Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+import { AuthRoutingModule } from './auth-routing.module';
+import { AuthComponent } from './auth.component';
+
+
+@NgModule({
+  declarations: [
+    AuthComponent
+  ],
+  imports: [
+    CommonModule,
+    AuthRoutingModule,
+  ]
 })
-export class AuthComponent { }
+export class AuthModule { }

@@ -10,9 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { UsersModule } from './pages/users/users.module';
 import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-directivas.module';
 import { ProductsModule } from './pages/products/products.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { Clase10Rxjs2Module } from './pages/clase-10-rxjs-2/clase-10-rxjs-2.module';
 import { MatListModule } from '@angular/material/list';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { MatListModule } from '@angular/material/list';
     UsersModule,
     PipesYDirectivasModule,
     ProductsModule,
-    BrowserAnimationsModule,
+    SharedModule,
     Clase10Rxjs2Module,
     MatListModule,
 
