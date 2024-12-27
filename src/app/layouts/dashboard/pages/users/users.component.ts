@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IUser } from './models';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
+import { UsersService } from './users.services';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
 
   displayedColumns: string[] = [
     'id', 
@@ -20,27 +21,31 @@ export class UsersComponent {
     'actions',
   ];
   
+  loading = false;
 
   users: IUser[] =[
-    {
-      id: 1,
-      firstName: 'naruto',
-      lastName: 'kasaki',
-      email: 'nar@gass.com',
-      role: 'ADMIN',
-      createdAt: new Date ()
-    },
-    {
-      id: 2,
-      firstName: 'sasuke',
-      lastName: 'icha',
-      email: 'sas@gass.com',
-      role: 'USER',
-      createdAt: new Date ()
-    },
+   
   ]
 
-  constructor (private matDialog: MatDialog) {} 
+  constructor (private matDialog: MatDialog, private usersService: UsersService) {} 
+
+  ngOnInit(): void {
+    this.loading = true;
+    this.usersService.getUsers().subscribe({
+      next: (users) => {
+        console.log('next: ', users)
+      },
+      error: (err)=> {
+        console.log('error: ', err)
+      },
+      complete: () => {
+        
+        console.log('complete!');
+        this.loading = false;
+      }
+    }) 
+  }
+
   openDialog(editingUser?:IUser): void{
     this.matDialog
     .open(UserDialogComponent, {
