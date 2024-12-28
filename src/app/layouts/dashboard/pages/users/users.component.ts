@@ -34,6 +34,7 @@ export class UsersComponent implements OnInit {
     this.usersService.getUsers().subscribe({
       next: (users) => {
         console.log('next: ', users)
+        this.users = users;
       },
       error: (err)=> {
         console.log('error: ', err)
