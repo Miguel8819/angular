@@ -1,5 +1,6 @@
-<h1>Detalles del usuario: nombre</h1>
-
-<pre>{{user$ | async | json}}</pre>
-
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div [ngClass]="!loading? 'd-block': 'd-none'">
+    <h1>Detalles del usuario: nombre</h1>
+    <pre>{{user$ | async | json}}</pre>
+</div>
 <!-- <button (click)="cambiarParametro()" >Cambiar parametro</button> -->

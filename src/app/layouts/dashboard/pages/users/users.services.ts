@@ -25,10 +25,10 @@ const USERS_DB: IUser[]= [
 export class UsersService{
 
     getUsers():Observable<IUser[]>{
-        return of(USERS_DB).pipe(delay(2000));
+        return of(USERS_DB).pipe(delay(1500));
     }
 
     getUsersById(id:number): Observable<IUser | undefined>{
-      return of (USERS_DB.find((el)=>el.id === id))
+      return of (USERS_DB.find((el)=>el.id === id)).pipe(delay(1500));
     }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../../users.services';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { IUser} from '../../models';
 
 @Component({
@@ -11,6 +11,8 @@ import { IUser} from '../../models';
 })
 export class UserDetailComponent {
   user$: Observable< IUser | undefined>
+
+  loading = false;
   
   constructor(
     private activatedRoute: ActivatedRoute, 
@@ -19,7 +21,13 @@ export class UserDetailComponent {
 
     // Para ver el detalle de los usuarios
     {
-      this.user$ = this.userServices.getUsersById(parseInt(this.activatedRoute.snapshot.params['id']));
+      this.loading = true;
+      this.user$ = this.userServices.getUsersById(parseInt(this.activatedRoute.snapshot.params['id'])
+    ).pipe(
+      finalize(() => {
+        this.loading = false;
+      })  
+    );
   // {
   //   this.activatedRoute.params.subscribe({
   //     next: (v) => console.log('OBSERVABLE', v['id']),
