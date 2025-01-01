@@ -33,11 +33,18 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+                      {
+                        "glob": "**/*",
+                        "input": "src/assets",
+                        "output": "/assets"
+                      },
+                      {
+                        "glob": "**/*",
+                        "input": "public",
+                        "output": "/"
+                      }
+                    ],
+
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
               "node_modules/bootstrap/dist/css/bootstrap-utilities.min.css",
