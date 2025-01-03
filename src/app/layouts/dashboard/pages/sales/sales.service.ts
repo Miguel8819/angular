@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
-import { ISale } from "./models";
+import { delay, Observable, of } from "rxjs";
+import { ICreatesaleData, ISale } from "./models";
 
 
 //BASE DE DATOS
@@ -30,11 +30,21 @@ export class SalesService {
     // CRUD
     //getSales: retorna un observable con el array de ventas
     getSales(): Observable<ISale[]> {
-        return of(SALES_DB);
+        return of(SALES_DB).pipe(delay(1500));
     }
     
-    createSales(data: ISale) {
-        SALES_DB.push(data);
+    createSales(data: ICreatesaleData) {
+
+        if (data.buyer && data.product && data.quantity) {
+            const newSale: ISale = {
+                id: new Date().getTime(),
+                buyer: data.buyer,
+                product: data.product,
+                quantity: data.quantity
+            }
+            SALES_DB.push(newSale);
+        }
+    
         return of(SALES_DB);
     }
      
