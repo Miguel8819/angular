@@ -35,9 +35,7 @@ export class DashboardComponent {
     })
   }
 
-  login(): void {
-    this.authService.login();
-  }
+
 
   logout(): void  {
     this.authService.logout();

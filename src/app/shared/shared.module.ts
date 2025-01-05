@@ -10,7 +10,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { ResaltadoDirective } from './directives/resaltado.directive';
 import { MatListModule } from '@angular/material/list';
-
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -31,6 +31,7 @@ import { MatListModule } from '@angular/material/list';
     ReactiveFormsModule,
     ResaltadoDirective,
     MatListModule,
+    MatCardModule,
   ],
 })
 export class SharedModule { }
