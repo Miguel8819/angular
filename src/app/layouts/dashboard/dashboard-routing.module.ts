@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { adminGuard } from '../../core/guards/admin.guard';
+import { unsavedChangesGuard } from '../../core/guards/unsaved-changes.guard';
 
 
 const routes: Routes = [
@@ -11,6 +13,7 @@ const routes: Routes = [
   
   {
     path: 'users',
+    canActivate: [adminGuard],
     loadChildren: () => 
       import('./pages/users/users.module').then((m) =>m.UsersModule),
   },
@@ -23,6 +26,7 @@ const routes: Routes = [
 
   {
     path:'sales',
+    canDeactivate: [unsavedChangesGuard],
     loadChildren: () =>
       import('./pages/sales/sales.module').then((m) =>m.SalesModule),
   },

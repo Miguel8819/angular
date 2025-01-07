@@ -21,6 +21,8 @@ export class SalesComponent implements OnInit {
   
   isLoading = false;
 
+  existsUnsavedChanges = false;
+
 
   saleForm = new FormGroup({
       quantity: new FormControl(1),
@@ -40,6 +42,16 @@ export class SalesComponent implements OnInit {
     this.loadSales();
     this.loadProducts();
     this.loadUsers();
+    this.suscribeToSaleFormChange();
+  }
+
+  suscribeToSaleFormChange(): void {
+    this.saleForm.valueChanges.subscribe({
+      next: (v) => {
+        console.log (v);
+        this.existsUnsavedChanges = true;
+      },
+    });
   }
 
   createSale() {
