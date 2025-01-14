@@ -1,34 +1,22 @@
 import { Injectable } from "@angular/core";
 import { IUser } from "./models";
 import { delay, Observable, of } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
-const USERS_DB: IUser[]= [
-     {
-          id: 1,
-          firstName: 'naruto',
-          lastName: 'kasaki',
-          email: 'nar@gass.com',
-          role: 'ADMIN',
-          createdAt: new Date ()
-        },
-        {
-          id: 2,
-          firstName: 'sasuke',
-          lastName: 'icha',
-          email: 'sas@gass.com',
-          role: 'USER',
-          createdAt: new Date ()
-        },
-]
+
 
 @Injectable({ providedIn: 'root'})
 export class UsersService{
 
+  constructor(private httpClient: HttpClient){}
+
     getUsers():Observable<IUser[]>{
-        return of(USERS_DB).pipe(delay(1500));
+      // colocamos la url y nos retorna los usuarios
+      return this.httpClient.get<IUser[]>('http://localhost:3000/users')
+        // return of(USERS_DB).pipe(delay(1500));
     }
 
-    getUsersById(id:number): Observable<IUser | undefined>{
-      return of (USERS_DB.find((el)=>el.id === id)).pipe(delay(1500));
+    getUsersById(id: string): Observable<IUser | undefined>{
+      return this.httpClient.get<IUser>('http://localhost:3000/users/'+ id);
     }
 }

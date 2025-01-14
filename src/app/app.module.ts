@@ -4,7 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DashboardModule } from './layouts/dashboard/dashboard.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,9 +19,10 @@ import { DashboardModule } from './layouts/dashboard/dashboard.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    DashboardModule,    
+    DashboardModule, 
+    HttpClientModule,   
   ],
-  providers: [],
+  providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,7 +22,8 @@ export class UserDetailComponent {
     // Para ver el detalle de los usuarios
     {
       this.loading = true;
-      this.user$ = this.userServices.getUsersById(parseInt(this.activatedRoute.snapshot.params['id'])
+      this.user$ = this.userServices.
+      getUsersById(this.activatedRoute.snapshot.params['id']
     ).pipe(
       finalize(() => {
         this.loading = false;

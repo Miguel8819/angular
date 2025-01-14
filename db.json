@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "firstName": "Naruto",
+      "lastName": "Naruto",
+      "id": "d61c"
+    },
+    {
+      "firstName": "Goku",
+      "lastName": "Naruto",
+      "id": "d62c"
+    },
+    {
+      "firstName": "Picachu",
+      "lastName": "Naruto",
+      "id": "d63c"
+    },
+    {
+      "firstName": "Ray",
+      "lastName": "Naruto",
+      "id": "d64c"
+    }
+  ],
+  "sales": [],
+  "roles": []
+}
